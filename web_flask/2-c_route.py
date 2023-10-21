@@ -16,11 +16,13 @@ def hbnb():
     """hbnb func"""
     return "HBNB"
 
+
 @app.route('/c/<text>', strict_slashes=False)
 def TextHbnb(text):
     """Text hbnb func"""
     text = text.replace('_', ' ')
     return "C " + text
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
