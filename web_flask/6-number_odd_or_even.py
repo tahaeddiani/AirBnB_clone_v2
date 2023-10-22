@@ -1,40 +1,39 @@
 #!/usr/bin/python3
-"""t6"""
-from flask import Flask
+"""
+A Flask web application with routes and rendering HTML templates.
+"""
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def home():
-    """home func"""
+def hello_hbnb():
     return "Hello HBNB!"
 
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
-    """hbnb func"""
     return "HBNB"
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def TextHbnb(text):
-    """Text hbnb func"""
+def c_route(text):
+    # Replace underscores (_) with spaces in the text variable
     text = text.replace('_', ' ')
     return "C " + text
 
 
 @app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def python_text(text):
-    """Text hbnb func"""
-    text = text.replace("_", " ")
-    return "Python {}".format(text)
+def python_route(text):
+    # Replace underscores (_) with spaces in the text variable
+    text = text.replace('_', ' ')
+    return "Python " + text
 
 
-@app.route("/number/<int:n>", strict_slashes=False)
-def number(n):
-    """is it a number"""
+@app.route('/number/<int:n>', strict_slashes=False)
+def number_route(n):
     return "{} is a number".format(n)
 
 
@@ -54,4 +53,4 @@ def number_odd_or_even(n):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host='0.0.0.0', port=5000)
